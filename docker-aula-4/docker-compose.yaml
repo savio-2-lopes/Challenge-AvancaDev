@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+
+  rabbit:
+    image: "rabbitmq:3-management"
+    environment:
+      RABBITMQ_ERLANG_COOKIE: "SWQOKODSQALRPCLNMEQG"
+      RABBITMQ_DEFAULT_USER: "rabbitmq"
+      RABBITMQ_DEFAULT_PASS: "rabbitmq"
+      RABBITMQ_DEFAULT_VHOST: "/"
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+  
+  microsservice-a:
+    image: savio2lopes/microsservico_a
+    ports:
+      - 9090:9090
+      
+    environment: 
+      RABBITMQ_DEFAULT_HOST: rabbit
+    depends_on: 
+      - rabbit
+    links: [rabbit]
+  
+  microsservice-b:
+    image: savio2lopes/microsservico_b
+    restart: always
+    environment: 
+      RABBITMQ_DEFAULT_HOST: rabbit
+    depends_on: 
+      - rabbit
+    links: [rabbit]
+
+  microsservice-c:
+      image: savio2lopes/microsservico_c
+      ports:
+        - 9092:9092
+      depends_on: 
+        - microsservice-b
+      links: [microsservice-b]
