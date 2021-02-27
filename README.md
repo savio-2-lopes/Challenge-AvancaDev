@@ -45,7 +45,8 @@
 
 - [X] Desafio 01 - 🚀  Crie o seu microsserviço
 - [X] Desafio 02 - 🚀  Microsserviços se comunicando utilizando filas
-- [X] Desafio 03 - 🚀  Microsserviços utilizando Docker
+- [X] Desafio 03 - 🚀  Integração contínua com React
+- [X] Desafio 04 - 🚀  Microsserviços utilizando Docker
 
 <br>
 
@@ -57,6 +58,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 - [GoLang](https://golang.org/)
 - [RabbitMQ](https://www.rabbitmq.com/)
+- [Typescript](https://www.typescriptlang.org/)
 - [Docker](https://www.docker.com/)
 
 <br>
